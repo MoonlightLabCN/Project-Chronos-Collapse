@@ -1,0 +1,67 @@
+# Makefile for TccMod components
+# Builds the .tccmod loader and test programs
+
+CC = gcc
+CFLAGS = -Wall -O2 -I..
+LDFLAGS =
+
+# For Windows
+ifeq ($(OS),Windows_NT)
+    EXESUF = .exe
+    LIBS =
+else
+    EXESUF =
+    LIBS = -ldl
+endif
+
+# Targets
+LOADER_LIB = libtccmod.a
+TEST_LOADER = test_tccmod_loader$(EXESUF)
+
+# Source files
+LOADER_SRCS = ../tccmod_loader.c
+LOADER_OBJS = tccmod_loader.o
+
+TEST_SRCS = test_tccmod_loader.c
+TEST_OBJS = test_tccmod_loader.o
+
+.PHONY: all clean test
+
+all: $(LOADER_LIB) $(TEST_LOADER)
+
+# Build loader library
+$(LOADER_LIB): $(LOADER_OBJS)
+	ar rcs $@ $^
+
+tccmod_loader.o: ../tccmod_loader.c ../tccmod.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Build test program
+$(TEST_LOADER): $(TEST_OBJS) $(LOADER_LIB)
+	$(CC) $(LDFLAGS) -o $@ $(TEST_OBJS) $(LOADER_LIB) $(LIBS)
+
+test_tccmod_loader.o: test_tccmod_loader.c ../tccmod.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Test target
+test: $(TEST_LOADER)
+	@echo "=== TccMod Loader Test ==="
+	@echo "Loader built successfully!"
+	@echo "Run './$(TEST_LOADER) <module.tccmod>' to test"
+
+clean:
+	rm -f $(LOADER_OBJS) $(TEST_OBJS) $(LOADER_LIB) $(TEST_LOADER)
+
+# Help
+help:
+	@echo "TccMod Build System"
+	@echo ""
+	@echo "Targets:"
+	@echo "  all          - Build loader library and test programs"
+	@echo "  test         - Build and verify test programs"
+	@echo "  clean        - Remove built files"
+	@echo "  help         - Show this help message"
+	@echo ""
+	@echo "Products:"
+	@echo "  $(LOADER_LIB)   - TccMod runtime loader library"
+	@echo "  $(TEST_LOADER)  - Loader test program"

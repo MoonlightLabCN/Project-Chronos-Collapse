@@ -1,0 +1,77 @@
+# 编译产物
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+
+# 构建目录
+build/
+Debug/
+Release/
+ARM/
+x64/
+x86/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.db
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# TCC 临时文件
+*.i
+*.s
+*.out
+a.out
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# 日志文件
+*.log
+
+# 备份文件
+*~
+*.bak
+*.swp
+*.tmp
+
+# 包文件
+*.appx
+*.msix
+*.zip
+*.tar.gz
+
+# 保留的重要文件（排除）
+!tinycc/win32/build/test_module.tccmod
+
+# Certificates / secrets
+*.pfx
+*.cer
+*.p12
+*.key
+
+# Packages & backups (already partly covered)
+AppPackages/
+BundleArtifacts/
+Backup/
+.claude/
+
+# XAML generated
+Generated Files/
+**/Generated Files/
+

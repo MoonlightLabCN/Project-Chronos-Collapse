@@ -1,0 +1,71 @@
+<Page
+    x:Class="Phase3Probe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Phase3Probe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 标题 -->
+        <StackPanel Grid.Row="0" Background="#2196F3" Padding="20">
+            <TextBlock Text="Phase3Probe"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="White"/>
+            <TextBlock Text="TccMod Loader Test"
+                       FontSize="16"
+                       Foreground="#E3F2FD"
+                       Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- 控制按钮 -->
+        <StackPanel Grid.Row="1" Padding="20">
+            <Button x:Name="LoadButton"
+                    Content="加载测试模块"
+                    Click="LoadButton_Click"
+                    HorizontalAlignment="Stretch"
+                    Background="#4CAF50"
+                    Foreground="White"
+                    Padding="15,10"
+                    Margin="0,0,0,10"/>
+
+            <Button x:Name="TestSymbolButton"
+                    Content="测试符号解析"
+                    Click="TestSymbolButton_Click"
+                    HorizontalAlignment="Stretch"
+                    Background="#FF9800"
+                    Foreground="White"
+                    Padding="15,10"
+                    Margin="0,0,0,10"
+                    IsEnabled="False"/>
+
+            <Button x:Name="ClearButton"
+                    Content="清除日志"
+                    Click="ClearButton_Click"
+                    HorizontalAlignment="Stretch"
+                    Background="#9E9E9E"
+                    Foreground="White"
+                    Padding="15,10"/>
+        </StackPanel>
+
+        <!-- 日志输出 -->
+        <ScrollViewer Grid.Row="2"
+                      Padding="20,0,20,20"
+                      VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="LogTextBlock"
+                       FontFamily="Consolas"
+                       FontSize="12"
+                       TextWrapping="Wrap"
+                       Foreground="#212121"/>
+        </ScrollViewer>
+    </Grid>
+</Page>

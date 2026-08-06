@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="SandboxProbe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SandboxProbe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="20,20,20,10">
+            <TextBlock Text="SandboxProbe - Chronos Collapse"
+                       Style="{StaticResource HeaderTextBlockStyle}"
+                       FontSize="24"
+                       FontWeight="SemiBold"/>
+            <TextBlock Text="Windows 10 Mobile ARM32 - Dynamic Code Execution Tests"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Opacity="0.7"
+                       Margin="0,5,0,15"/>
+
+            <!-- Row 1: Test 1, 2, 3 -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <Button x:ConnectionId='8' Content="Test 1: Basic JIT"
+                                                
+                        Style="{StaticResource AccentButtonStyle}"
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button x:ConnectionId='9' Content="Test 2: Load"
+                                                  
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button x:ConnectionId='10' Content="Test 3: Execute"
+                                               
+                        Padding="10,8"
+                        Width="130"/>
+            </StackPanel>
+
+            <!-- Row 2: Test 4, 5, View Log -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <Button x:ConnectionId='5' Content="Test 4: Host Call"
+                                                
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button x:ConnectionId='6' Content="Test 5: Full"
+                                                
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button x:ConnectionId='7' Content="View Log"
+                                         
+                        Padding="10,8"
+                        Width="130"
+                        Background="Gray"/>
+            </StackPanel>
+
+            <!-- Row 3: Clear Logs -->
+            <StackPanel Orientation="Horizontal">
+                <Button x:ConnectionId='4' Content="Clear Logs"
+                                           
+                        Padding="10,8"
+                        Width="130"
+                        Background="DarkRed"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="20,10,20,20">
+            <Border BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <ScrollViewer x:ConnectionId='2' x:Name="LogScrollViewer" Padding="10">
+                    <TextBlock x:ConnectionId='3' x:Name="LogText"
+                               Text="Click a test button to begin..."
+                               TextWrapping="Wrap"
+                               FontFamily="Consolas"
+                               FontSize="13"
+                               IsTextSelectionEnabled="True"/>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
+

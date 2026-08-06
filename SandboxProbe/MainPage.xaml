@@ -1,0 +1,91 @@
+<Page
+    x:Class="SandboxProbe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SandboxProbe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="20,20,20,10">
+            <TextBlock Text="SandboxProbe - Chronos Collapse"
+                       Style="{StaticResource HeaderTextBlockStyle}"
+                       FontSize="24"
+                       FontWeight="SemiBold"/>
+            <TextBlock Text="Windows 10 Mobile ARM32 - Dynamic Code Execution Tests"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       Opacity="0.7"
+                       Margin="0,5,0,15"/>
+
+            <!-- Row 1: Test 1, 2, 3 -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <Button Content="Test 1: Basic JIT"
+                        Click="OnTest1_BasicJIT"
+                        Style="{StaticResource AccentButtonStyle}"
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button Content="Test 2: Load"
+                        Click="OnTest2_ModuleLoad"
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button Content="Test 3: Execute"
+                        Click="OnTest3_Execute"
+                        Padding="10,8"
+                        Width="130"/>
+            </StackPanel>
+
+            <!-- Row 2: Test 4, 5, View Log -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <Button Content="Test 4: Host Call"
+                        Click="OnTest4_HostCall"
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button Content="Test 5: Full"
+                        Click="OnTest5_FullTest"
+                        Padding="10,8"
+                        Margin="0,0,6,0"
+                        Width="130"/>
+                <Button Content="View Log"
+                        Click="OnViewLog"
+                        Padding="10,8"
+                        Width="130"
+                        Background="Gray"/>
+            </StackPanel>
+
+            <!-- Row 3: Clear Logs -->
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Clear Logs"
+                        Click="OnClearLogs"
+                        Padding="10,8"
+                        Width="130"
+                        Background="DarkRed"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="20,10,20,20">
+            <Border BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
+                    BorderThickness="1"
+                    CornerRadius="4"
+                    Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                <ScrollViewer x:Name="LogScrollViewer" Padding="10">
+                    <TextBlock x:Name="LogText"
+                               Text="Click a test button to begin..."
+                               TextWrapping="Wrap"
+                               FontFamily="Consolas"
+                               FontSize="13"
+                               IsTextSelectionEnabled="True"/>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
