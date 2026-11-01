@@ -134,4 +134,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <!-- Windows 10 Mobile ARM32 uses the archived Microsoft-signed 14.0.27323
+       framework. Its exports cover every CRT import in the ARM payload. -->
+  <Target Name="UseMobileArm32VCLibs" BeforeTargets="_GenerateCurrentProjectAppxManifest" Condition="'$(Platform)' == 'ARM'">
+    <ItemGroup>
+      <FrameworkSdkReference Update="@(FrameworkSdkReference)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch(`%(FrameworkSdkReference.FrameworkIdentity)`, `Microsoft[.]VCLibs[.]140[.]00`))">
+        <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27323.0, Publisher = 'CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US'</FrameworkIdentity>
+      </FrameworkSdkReference>
+    </ItemGroup>
+  </Target>
 </Project>
