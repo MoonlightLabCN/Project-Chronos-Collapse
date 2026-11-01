@@ -1,0 +1,9 @@
+{
+  "format": "chronos-project",
+  "formatVersion": 1,
+  "id": "com.ouyangquan.chronos.hello",
+  "name": "Hello Chronos",
+  "source": "main.c",
+  "view": "view.xaml",
+  "entry": "chronos_main"
+}
